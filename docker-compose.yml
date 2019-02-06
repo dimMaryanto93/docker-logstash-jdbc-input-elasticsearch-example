@@ -49,6 +49,13 @@ services:
   logstash:
     build: ./logstash/
     image: dimmaryanto93/logstash-jdbc-plugin:1.1
+    environment:
+      - LOGSTASH_JDBC_URL=jdbc:mysql://mysql:3306/example?useSSL=false
+      - LOGSTASH_JDBC_DRIVER=com.mysql.jdbc.Driver
+      - LOGSTASH_JDBC_DRIVER_JAR_LOCATION=mysql-connector-java.jar
+      - LOGSTASH_JDBC_USERNAME=admin
+      - LOGSTASH_JDBC_PASSWORD=admin
+      - LOGSTASH_ELASTICSEARCH_HOST=http://elasticsearch:9200
     ports: 
       - 9600:9600
       - 5044:5044
